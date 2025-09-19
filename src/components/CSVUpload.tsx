@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { FileText, MapPin, Play } from 'lucide-react';
+import { Upload, FileText, MapPin, Play, AlertCircle } from 'lucide-react';
 import Papa from 'papaparse';
 
 interface CSVUploadProps {
