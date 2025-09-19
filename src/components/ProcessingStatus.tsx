@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Loader2, CheckCircle, AlertCircle, Database } from 'lucide-react';
+import { Loader2, Database } from 'lucide-react';
 
 export default function ProcessingStatus() {
   const [dots, setDots] = useState('');

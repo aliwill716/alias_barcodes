@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
       try {
         const errorData = JSON.parse(errorText);
         errorMessage = errorData.error_description || errorData.error || 'Authentication failed';
-      } catch (e) {
+      } catch {
         errorMessage = `ShipHero API Error: ${response.status} - ${errorText.substring(0, 200)}`;
       }
       

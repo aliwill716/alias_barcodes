@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Upload, Zap, Database, Settings, CheckCircle, AlertCircle } from 'lucide-react';
+import { Database, CheckCircle } from 'lucide-react';
 import AuthForm from '@/components/AuthForm';
 import CSVUpload from '@/components/CSVUpload';
 import ProcessingStatus from '@/components/ProcessingStatus';
@@ -9,7 +9,7 @@ import ProcessingStatus from '@/components/ProcessingStatus';
 export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [processingResults, setProcessingResults] = useState<any>(null);
+  const [processingResults, setProcessingResults] = useState<{ successCount: number; errorCount: number; errors: string[] } | null>(null);
 
   // Check for existing authentication on mount
   useEffect(() => {

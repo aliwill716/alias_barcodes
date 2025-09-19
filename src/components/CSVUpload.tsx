@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Upload, FileText, MapPin, Play, AlertCircle } from 'lucide-react';
+import { FileText, MapPin, Play } from 'lucide-react';
 import Papa from 'papaparse';
 
 interface CSVUploadProps {
   onProcessingStart: () => void;
-  onProcessingComplete: (results: any) => void;
+  onProcessingComplete: (results: { successCount: number; errorCount: number; errors: string[] }) => void;
 }
 
 interface CSVRow {
