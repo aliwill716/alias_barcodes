@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
     // Get access token from Authorization header
     const authHeader = request.headers.get('authorization');
-    const accessToken = authHeader?.replace('Bearer ', '');
+    const accessToken = authHeader?.replace('Bearer ', '') || process.env.SHIPHERO_ACCESS_TOKEN;
     
     if (!accessToken) {
       return NextResponse.json(
