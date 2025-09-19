@@ -1,0 +1,10 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "env": {
+    "SHIPHERO_CLIENT_ID": "@shiphero_client_id",
+    "SHIPHERO_CLIENT_SECRET": "@shiphero_client_secret"
+  }
+}

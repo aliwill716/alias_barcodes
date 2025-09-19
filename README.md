@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ShipHero Barcode Matrix
 
-## Getting Started
+A standalone Next.js application for creating product case barcodes in ShipHero by uploading CSV files.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🔐 ShipHero OAuth authentication with refresh token support
+- 🏢 3PL support with account ID management
+- 📊 CSV file upload with automatic header mapping
+- ⚡ Batch processing for efficient API calls
+- 🎨 Retro/futuristic UI design
+- 🚀 Vercel deployment ready
+
+## Setup
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Environment Variables:**
+   Create a `.env.local` file in the root directory with:
+   ```env
+   SHIPHERO_CLIENT_ID=your_client_id_here
+   SHIPHERO_CLIENT_SECRET=your_client_secret_here
+   ```
+
+3. **Run development server:**
+   ```bash
+   npm run dev
+   ```
+
+## Usage
+
+1. **Authentication:**
+   - Enter your ShipHero refresh token
+   - Check "I am a 3PL" if you're a 3PL and enter the client account ID
+   - Click "Connect to ShipHero"
+
+2. **CSV Upload:**
+   - Upload a CSV file with columns for SKU, case barcode, and case quantity
+   - Map the CSV headers to the required fields
+   - Click "Process Products" to update ShipHero
+
+## CSV Format
+
+Your CSV should contain these columns (headers can be named anything):
+- SKU (product identifier)
+- Case Barcode (barcode for the case)
+- Case Quantity (number of units in the case)
+
+Example:
+```csv
+SKU,Case_Barcode,Case_Quantity
+PROD-001,123456789012,12
+PROD-002,123456789013,24
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This app is configured for Vercel deployment. Simply connect your GitHub repository to Vercel and add the environment variables in the Vercel dashboard.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## API Endpoints
 
-## Learn More
+- `POST /api/shiphero/auth/refresh` - Authenticate with ShipHero
+- `POST /api/process-csv` - Process CSV and update products
 
-To learn more about Next.js, take a look at the following resources:
+## Technologies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 14 with App Router
+- TypeScript
+- Tailwind CSS
+- Papa Parse (CSV parsing)
+- Lucide React (icons)
+- ShipHero GraphQL API
