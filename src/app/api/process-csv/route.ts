@@ -19,10 +19,9 @@ interface ProcessedProduct {
 
 export async function POST(request: NextRequest) {
   try {
-    const { data, mapping, accountId } = await request.json() as {
+    const { data, mapping } = await request.json() as {
       data: CSVRow[];
       mapping: HeaderMapping;
-      accountId?: string;
     };
 
     if (!data || !mapping) {
@@ -93,7 +92,7 @@ export async function POST(request: NextRequest) {
     for (let i = 0; i < batches.length; i++) {
       const batch = batches[i];
       try {
-        const batchResults = await processBatch(batch, accessToken, accountId);
+        const batchResults = await processBatch(batch, accessToken);
         successCount += batchResults.successCount;
         errorCount += batchResults.errorCount;
         errors.push(...batchResults.errors);
@@ -124,7 +123,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function processBatch(products: ProcessedProduct[], accessToken: string, accountId?: string) {
+async function processBatch(products: ProcessedProduct[], accessToken: string) {
   let successCount = 0;
   let errorCount = 0;
   const errors: string[] = [];

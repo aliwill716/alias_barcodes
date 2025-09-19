@@ -127,8 +127,6 @@ export default function CSVUpload({ onProcessingStart, onProcessingComplete }: C
         throw new Error('No access token found. Please authenticate first.');
       }
 
-            const accountId = localStorage.getItem('shiphero_account_id');
-            
             const response = await fetch('/api/process-csv', {
               method: 'POST',
               headers: {
@@ -138,7 +136,6 @@ export default function CSVUpload({ onProcessingStart, onProcessingComplete }: C
               body: JSON.stringify({
                 data: csvData,
                 mapping: headerMapping,
-                accountId: accountId || undefined
               }),
             });
 
