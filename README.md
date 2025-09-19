@@ -18,14 +18,7 @@ A standalone Next.js application for creating product case barcodes in ShipHero 
    npm install
    ```
 
-2. **Environment Variables:**
-   Create a `.env.local` file in the root directory with:
-   ```env
-   SHIPHERO_CLIENT_ID=your_client_id_here
-   SHIPHERO_CLIENT_SECRET=your_client_secret_here
-   ```
-
-3. **Run development server:**
+2. **Run development server:**
    ```bash
    npm run dev
    ```
